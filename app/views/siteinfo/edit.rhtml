@@ -1,0 +1,47 @@
+<html>
+<head>
+  <script>
+    function confirm_delete() {
+      if(!confirm("delete this ?")) {
+        return;
+      }
+      var form = document.getElementById("edit_form");
+      form.action = "../siteinfo/delete";
+      form.submit();
+    }
+  </script>
+  <title>Goole Reader Full Feed Changer's Site Info</title>
+</head>
+<body>
+<form id="edit_form" method="post" action="../siteinfo/edit_save">
+<input type="hidden" name="no" value="<%= @site.no %>"><br>
+<table>
+  <tr>
+    <td>name</td>
+    <td><input type="text" name="name" size="100" value="<%= escape @site.name %>"></td>
+  </tr>
+  <tr>
+    <td>url</td>
+    <td><input type="text" name="url" size="100" value="<%= escape @site.url %>"></td>
+  </tr>
+  <tr>
+    <td>xpath</td>
+    <td><input type="text" name="xpath" size="100" value="<%= escape @site.xpath %>"></td>
+  </tr>
+  <tr>
+    <td>charset</td>
+    <td><input type="text" name="charset" size="20" value="<%= escape @site.charset %>"></td>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td><input type="password" name="password" size="10"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right">
+      <input type="submit" value="edit">
+      <input type="button" value="delete" onclick="confirm_delete()">
+    </td>
+  </tr>
+</table>
+</body>
+</html>
